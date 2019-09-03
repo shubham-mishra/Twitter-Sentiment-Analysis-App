@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	{% if result != None %}
+		<div class="result_div">
+			<div class="topic_div">
+				<span><b>Trend: </b>{{trend}}</span>,
+				<span><b>Personality: </b>{{personality}}</span>
+			</div>
+			<table >
+			<tr>
+				<td>
+					<p>No. of Positive Tweets: {{result.positive_tweets_counts}}</p>
+					<span>Word Cloud for Positive Phrases</span><br/>		
+				</td>
+				<td>
+					<p>No. of Negative Tweets: {{result.negative_tweets_counts}}</p>
+					<span>Word Cloud for Negative Phrases</span><br/>
+				</td>
+			</tr>
+			<tr>	
+				<td class="img_td">
+					{% if result.positive_image %}
+						<img src="data:image/png;base64,{{ result.positive_image }}" >
+					{% else %}
+						<h3>No Positive Tweet</h3>
+					{% endif %}
+				</td>
+				<td class="img_td">
+					{% if result.negative_image %}
+						<img src="data:image/png;base64,{{ result.negative_image }}" >
+					{% else %}
+						<h3>No Negative Tweet</h3>
+					{% endif %}
+				</td>
+			</tr>
+		</table>
+		</div>
+	{% endif %}
+{% endblock content %}

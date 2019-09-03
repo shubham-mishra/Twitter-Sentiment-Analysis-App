@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div class="form_div">
+		<form method="POST" action="" >
+
+
+			{{ form.hidden_tag() }}
+			<table>
+				<tr>
+					<td><span>Topic</span></td>
+					<td><span>Personality</span></td>
+				</tr>
+				<tr>
+					<td>
+						{{ form.first_keyword }}
+					</td>
+					<td>
+						{{ form.second_keyword }}
+					</td>
+				</tr>
+			</table>
+			<!-- {{ form.first_keyword.label }}  -->
+			<!-- {{ form.first_keyword }} -->
+			<!-- {{ form.second_keyword.label }}  -->
+			<!-- {{ form.second_keyword }} <br/> -->
+			<button type="submit" onclick="loading();">Analyse</button>
+			{% with message = get_flashed_messages()%}
+				{% if message %}
+					<h3>{{message[0]}}</h3>
+				{% endif %}
+			{% endwith %}
+		</form>
+	</div>
+	
+{% endblock content %}
